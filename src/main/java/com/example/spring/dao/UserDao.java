@@ -1,4 +1,5 @@
-package com.example.spring.service;
+package com.example.spring.dao;
+
 
 
 import com.example.spring.model.Role;
@@ -6,8 +7,7 @@ import com.example.spring.model.User;
 
 import java.util.List;
 
-public interface UserService {
-
+public interface UserDao {
     User getUserByName(String name);
 
     public Role getRole(String role);
