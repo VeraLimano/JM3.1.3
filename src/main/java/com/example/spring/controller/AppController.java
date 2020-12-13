@@ -61,16 +61,21 @@ public class AppController {
     }
 
     @PostMapping(value = "/admin")
-    public String create(@ModelAttribute("user") User user,
-                         @RequestParam(required = false) boolean adminCheck,
-                         @RequestParam(required = false) boolean userCheck) {
+    public String create(@ModelAttribute("user") User user, @RequestParam("editRoles") String[] roles){
+//                         @RequestParam(required = false) boolean adminCheck,
+//                         @RequestParam(required = false) boolean userCheck) {
 //        принимать на вход post запрос, создавать нового юзера, и добавлять в БД
         Set<Role> roleList = new HashSet<Role>();
-        if (adminCheck) {
-            roleList.add(userService.getRole("ROLE_ADMIN"));
-        }
-        if (userCheck) {
-            roleList.add(userService.getRole("ROLE_USER"));
+//        if (adminSelect) {
+//            roleList.add(userService.getRole("ROLE_ADMIN"));
+//        }
+//        if (userCheck) {
+//            roleList.add(userService.getRole("ROLE_USER"));
+//        }
+//        user.setRoles(roleList);
+//        userService.save(user);
+        for(String r : roles) {
+            roleList.add(userService.getRole(r));
         }
         user.setRoles(roleList);
         userService.save(user);
@@ -84,15 +89,22 @@ public class AppController {
     }
 
     @PostMapping(value = "/admin/edit/{id}")
-    public String update(@ModelAttribute("user") User user,
-                         @RequestParam(required = false) boolean adminCheck,
-                         @RequestParam(required = false) boolean userCheck) {
-        Set<Role> roleList = new HashSet<Role>();
-        if (adminCheck) {
-            roleList.add(userService.getRole("ROLE_ADMIN"));
-        }
-        if (userCheck) {
-            roleList.add(userService.getRole("ROLE_USER"));
+    public String update(@ModelAttribute("user") User user, @RequestParam("editRoles") String[] roles) {
+//                         @RequestParam(required = false) boolean adminCheck,
+//                         @RequestParam(required = false) boolean userCheck) {
+//        Set<Role> roleList = new HashSet<Role>();
+//        if (adminCheck) {
+//            roleList.add(userService.getRole("ROLE_ADMIN"));
+//        }
+//        if (userCheck) {
+//            roleList.add(userService.getRole("ROLE_USER"));
+//        }
+//        user.setRoles(roleList);
+//        userService.update(user);
+//        return "redirect:/admin";
+        Set<Role> roleList = new HashSet<Role>();;
+        for(String r : roles) {
+            roleList.add(userService.getRole(r));
         }
         user.setRoles(roleList);
         userService.update(user);

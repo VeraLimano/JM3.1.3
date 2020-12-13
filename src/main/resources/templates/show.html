@@ -10,14 +10,21 @@
     <p>Hello User, this Spring Security example</p>
 </div>
 
-<label for>Name: </label>
+<label for>First Name: </label>
 <p th:text="${user.getName()}">VALUE</p>
+<label for>Last Name: </label>
+<P th:text="${user.getSurname()}">VALUE</P>
 <label for>ID: </label>
 <P th:text="${user.getId()}">VALUE</P>
 <label for>Password: </label>
 <P th:text="${user.getPassword()}">VALUE</P>
 <label for>Role: </label>
 <P th:text="${user.getRoles()}">VALUE</P>
+<label for>Age: </label>
+<P th:text="${user.getAge()}">VALUE</P>
+<label for>Email: </label>
+<P th:text="${user.getEmail()}">VALUE</P>
+
 
 <a th:href="@{/admin/{id}/edit(id=${user.getId()})}">Edit</a>
 
