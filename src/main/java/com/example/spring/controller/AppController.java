@@ -41,7 +41,7 @@ public class AppController {
     public String getAdminPage(Model model) {
         //        получим всех юзеров из DAO и передадим на представление
         model.addAttribute("user", userService.index());
-        return "admin";
+        return "admi";
     }
 
     @GetMapping(value = "/admin/{id}")

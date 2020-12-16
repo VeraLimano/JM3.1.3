@@ -1,17 +1,75 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Bootstrap уроки</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!--    <style>-->
+    <!--        body {-->
+    <!--            padding: 30px;-->
+    <!--        }-->
+    <!--    </style>-->
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<div>
-    <form method="post" action="/login">
-        <input name="j_username"/>
-        <input name="j_password"/>
-        <input type="submit"/>
-    </form>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-3">
+<!--        <input name="j_username"/>&ndash;&gt;-->
+        <!--        <input name="j_password"/>-->
+        <form class="form-signin" method="post" action="/login">
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input name="j_username" id="inputEmail" class="form-control" placeholder="Email address">
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input name="j_password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+            <br>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
+    </div>
+    <div class="col-md-5"></div>
 </div>
 </body>
 </html>
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div>-->
+<!--    <form method="post" action="/login">-->
+<!--        <input name="j_username"/>-->
+<!--        <input name="j_password"/>-->
+<!--        <input type="submit"/>-->
+<!--    </form>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
