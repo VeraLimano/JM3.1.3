@@ -59,12 +59,12 @@ public class AppController {
         User user = new User();
         model.addAttribute("user", user);
 //      возвращает html форму для создания нового юзера
-        return "new";
-//        return "admi";
+//        return "new";
+        return "admi";
     }
 
 
-    @PostMapping(value = "/admin")
+    @PostMapping(value = "/admin/new")
     public String create(@ModelAttribute("user") User user, @RequestParam("editRoles") String[] roles){
 //                         @RequestParam(required = false) boolean adminCheck,
 //                         @RequestParam(required = false) boolean userCheck) {
