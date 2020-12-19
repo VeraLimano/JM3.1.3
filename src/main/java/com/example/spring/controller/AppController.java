@@ -48,8 +48,10 @@ public class AppController {
     public String show(@PathVariable("id") int id, Model model) {
 //      получим юзера по id из DAO и передадим на представление
         User user = userService.show(id);
-        model.addAttribute("user", user);
-        return "show";
+//        model.addAttribute("user", user);
+        model.addAttribute("user1", user);
+//        return "show";
+        return "admi";
     }
 
     @GetMapping(value = "/admin/new")
@@ -58,7 +60,9 @@ public class AppController {
         model.addAttribute("user", user);
 //      возвращает html форму для создания нового юзера
         return "new";
+//        return "admi";
     }
+
 
     @PostMapping(value = "/admin")
     public String create(@ModelAttribute("user") User user, @RequestParam("editRoles") String[] roles){
@@ -85,23 +89,12 @@ public class AppController {
     @GetMapping(value = "/admin/{id}/edit")
     public String edit(Model model, @PathVariable("id") int id) {
         model.addAttribute("user", userService.show(id));
-        return "edit";
+//        return "edit";
+        return "admi";
     }
 
-    @PostMapping(value = "/admin/edit/{id}")
+    @PostMapping(value = "/admin/{id}/edit")
     public String update(@ModelAttribute("user") User user, @RequestParam("editRoles") String[] roles) {
-//                         @RequestParam(required = false) boolean adminCheck,
-//                         @RequestParam(required = false) boolean userCheck) {
-//        Set<Role> roleList = new HashSet<Role>();
-//        if (adminCheck) {
-//            roleList.add(userService.getRole("ROLE_ADMIN"));
-//        }
-//        if (userCheck) {
-//            roleList.add(userService.getRole("ROLE_USER"));
-//        }
-//        user.setRoles(roleList);
-//        userService.update(user);
-//        return "redirect:/admin";
         Set<Role> roleList = new HashSet<Role>();;
         for(String r : roles) {
             roleList.add(userService.getRole(r));
@@ -117,4 +110,3 @@ public class AppController {
         return "redirect:/admin";
     }
 }
-
