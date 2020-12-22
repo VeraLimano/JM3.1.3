@@ -3,6 +3,8 @@ package com.example.spring.model;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 // Этот класс реализует интерфейс GrantedAuthority, в котором необходимо переопределить только один метод getAuthority() (возвращает имя роли).
@@ -65,8 +67,23 @@ public class Role implements GrantedAuthority {
         return role;
     }
 
+//    @Override
+//    public String toString() {
+//        return role;
+//    }
+
+
     @Override
     public String toString() {
-        return role;
+        String ad = "ADMIN";
+        String us = "USER";
+        String str = null;
+        if (role.equals("ROLE_USER"))
+            str = us;
+        else if (role.equals("ROLE_ADMIN"))
+            str = ad;
+        else if(role.equals("ROLE_USER") & role.equals("ROLE_ADMIN"))
+            str = ad + ", " + us;
+        return str;
     }
 }

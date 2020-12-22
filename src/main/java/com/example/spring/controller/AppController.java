@@ -4,6 +4,8 @@ import com.example.spring.model.Role;
 import com.example.spring.model.User;
 import com.example.spring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -30,29 +33,58 @@ public class AppController {
     }
 
     @GetMapping(value = "/user")
-    public String printWelcome(ModelMap model, Principal principal ) {
+    public String printWelcome(Model model, Principal principal ) {
         String name = principal.getName();//get logged in username
         User user = userService.getUserByName(name);
         model.addAttribute("username", user);
-        return "user";
+        return "use";
     }
 
     @GetMapping(value = "/admin")
-    public String getAdminPage(Model model) {
-        //        получим всех юзеров из DAO и передадим на представление
+    public String printWelcomeAdmin(Model model, Principal principal ) {
+        String name = principal.getName();//get logged in username
+        User user = userService.getUserByName(name);
+        model.addAttribute("userAuth", user);
         model.addAttribute("user", userService.index());
         return "admi";
     }
 
-    @GetMapping(value = "/admin/{id}")
-    public String show(@PathVariable("id") int id, Model model) {
-//      получим юзера по id из DAO и передадим на представление
-        User user = userService.show(id);
-//        model.addAttribute("user", user);
-        model.addAttribute("user1", user);
-//        return "show";
-        return "admi";
+    @GetMapping(value = "/adminin")
+    public String printAdmin(Model model, Principal principal ) {
+        String name = principal.getName();//get logged in username
+        User user = userService.getUserByName(name);
+        model.addAttribute("username", user);
+        return "adminin";
     }
+
+
+
+//    @GetMapping("/admin")
+//    public String getAdminPage(Model model) {
+//        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User userAuthenficated = userService.getUserByName(userDetails.getUsername());
+//        model.addAttribute("userAuthenficated", userAuthenficated);
+//        model.addAttribute("user", userService.index());
+//        return "admi";
+//    }
+
+
+//    @GetMapping(value = "/admin")
+//    public String getAdminPage(Model model) {
+//        //        получим всех юзеров из DAO и передадим на представление
+//        model.addAttribute("user", userService.index());
+//        return "admi";
+//    }
+
+//    @GetMapping(value = "/admin/{id}")
+//    public String show(@PathVariable("id") int id, Model model) {
+////      получим юзера по id из DAO и передадим на представление
+//        User user = userService.show(id);
+////        model.addAttribute("user", user);
+//        model.addAttribute("user1", user);
+////        return "show";
+//        return "admi";
+//    }
 
     @GetMapping(value = "/admin/new")
     public String newUser(Model model) {
@@ -66,18 +98,8 @@ public class AppController {
 
     @PostMapping(value = "/admin/new")
     public String create(@ModelAttribute("user") User user, @RequestParam("editRoles") String[] roles){
-//                         @RequestParam(required = false) boolean adminCheck,
-//                         @RequestParam(required = false) boolean userCheck) {
 //        принимать на вход post запрос, создавать нового юзера, и добавлять в БД
         Set<Role> roleList = new HashSet<Role>();
-//        if (adminSelect) {
-//            roleList.add(userService.getRole("ROLE_ADMIN"));
-//        }
-//        if (userCheck) {
-//            roleList.add(userService.getRole("ROLE_USER"));
-//        }
-//        user.setRoles(roleList);
-//        userService.save(user);
         for(String r : roles) {
             roleList.add(userService.getRole(r));
         }
