@@ -10,6 +10,8 @@ public interface UserService {
 
     User getUserByName(String name);
 
+    public User getUserByEmail(String name);
+
     public Role getRole(String role);
 
     public List<User> index();
