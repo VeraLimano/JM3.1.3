@@ -27,6 +27,11 @@ public class AppController {
         return "index";
     }
 
+    @GetMapping(value = "/restUser")
+    public String getPage() {
+        return "restUser";
+    }
+
     @GetMapping(value = "/login")
     public String getLoginPage() {
         return "login";
