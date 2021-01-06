@@ -40,7 +40,7 @@
             <div class="h1">Admin Panel</div>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#users">Users table</a>
+                    <a class="nav-link active" data-toggle="tab" href="#users" id="UsersTable">Users table</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#new">New user</a>
@@ -193,6 +193,8 @@
                         </div>
                     </div>
 
+<!-------------------New user-------------------------------------------------------------------------------------------------------->
+
                 </div>
                 <div class="tab-pane fade" id="new">
                     <table class="table bg-white table-striped">
@@ -204,27 +206,27 @@
                         <tr>
                             <th>
                                 <div class="bg-white text-center">
-                                    <form class="offset-md-4 col-md-4" method="POST" action="/admin/new">
+                                    <form class="offset-md-4 col-md-4" id="addNewUser">
                                         <div class="form-group">
-                                            <label for="name">First name </label>
-                                            <input type="text" class="form-control" name="name" id="name"/>
+                                            <label for="nameNew">First name </label>
+                                            <input type="text" class="form-control" name="name" id="nameNew"/>
                                         </div>
                                         <div class="form-group">
-                                            <label for="surname">Last name</label>
-                                            <input type="text" class="form-control" name="surname" id="surname"/>
+                                            <label for="surnameNew">Last name</label>
+                                            <input type="text" class="form-control" name="surname" id="surnameNew"/>
                                         </div>
-                                        <label for="age">Age</label>
-                                        <input type="number" class="form-control" name="age" id="age"/>
+                                        <label for="ageNew">Age</label>
+                                        <input type="number" class="form-control" name="age" id="ageNew"/>
                                         <br>
-                                        <label for="email">Enter E-mail: </label>
-                                        <input type="email" class="form-control" name="email" id="email"/>
+                                        <label for="emailNew">Enter E-mail: </label>
+                                        <input type="email" class="form-control" name="email" id="emailNew"/>
                                         <br>
-                                        <label for="password">Password</label>
-                                        <input type="password" class="form-control" name="password" id="password"/>
+                                        <label for="passwordNew">Password</label>
+                                        <input type="password" class="form-control" name="password" id="passwordNew"/>
                                         <br>
-                                        <label for="editRoles">Roles </label>
+                                        <label for="rolesNew">Roles </label>
                                         <br>
-                                        <select class="custom-select" id="editRoles" name="editRoles" multiple size="2"
+                                        <select class="custom-select" id="rolesNew" name="roles" multiple size="2"
                                                 required>
                                             <option value="ROLE_ADMIN" adminSelect>ADMIN</option>
                                             <option value="ROLE_USER" userSelect>USER</option>
@@ -247,6 +249,7 @@
 <script src="/allUsers.js"></script>
 <script src="/delete.js"></script>
 <script src="/windows.js"></script>
+<script src="/newUser.js"></script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

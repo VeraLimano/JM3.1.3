@@ -1,20 +1,20 @@
-document.getElementById("addNewUser").addEventListener("submit", "addNewUser");
+document.getElementById("addNewUser").addEventListener("submit", addNewUser);
 
 function addNewUser(e){
     e.preventDefault();
 
-    let firstName = document.getElementById("name").value;
-    let lastName = document.getElementById("surname").value;
-    let age = document.getElementById("age").value;
-    let email = document.getElementById("email").value;
-    let password = document.getElementById("password").value;
-    let roles = setRoles(Array.from(document.getElementById("roles").selectedOptions)
+    let firstName = document.getElementById("nameNew").value;
+    let lastName = document.getElementById("surnameNew").value;
+    let age = document.getElementById("ageNew").value;
+    let email = document.getElementById("emailNew").value;
+    let password = document.getElementById("passwordNew").value;
+    let roles = setRoles(Array.from(document.getElementById("rolesNew").selectedOptions)
         .map(option => option.value));
 
     fetch("http://localhost:8088/newUser", {
         method: "POST",
         headers: {
-            "Accept": "application/json, text/plain, */*",
+            // "Accept": "application/json, text/plain, */*",
             "Content-type": "application/json"
         },
         body: JSON.stringify({
@@ -28,7 +28,7 @@ function addNewUser(e){
     })
         .finally(() => {
             document.getElementById("UsersTable").click();
-            addNewUser(e);
+            getUsers();
             document.getElementById("addNewUser").reset();
         })
 }

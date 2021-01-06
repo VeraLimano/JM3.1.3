@@ -45,16 +45,22 @@ public class RestContr {
     }
 
 
-    @PostMapping(value = "/newUser")
-    public ResponseEntity<User> create(@RequestBody User user) {
-        Set<Role> roleList = new HashSet<Role>();
-        for (Role r : user.getRoles()) {
-            roleList.add(r);
-        }
-        user.setRoles(roleList);
+//    @PostMapping(value = "/newUser")
+//    public ResponseEntity<User> create(@RequestBody User user) {
+//        Set<Role> roleList = new HashSet<Role>();
+//        for (Role r : user.getRoles()) {
+//            roleList.add(r);
+//        }
+//        user.setRoles(roleList);
+//        service.save(user);
+//        return new ResponseEntity<>(user, HttpStatus.OK);
+//    }
+
+    @PostMapping("/newUser")
+    public void add(@RequestBody User user) {
         service.save(user);
-        return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
 
 
     @PutMapping("/rest/{id}")
