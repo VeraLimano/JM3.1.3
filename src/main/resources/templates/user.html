@@ -1,3 +1,5 @@
+
+<!--      xmlns:th="http://www.thymeleaf.org">-->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
@@ -56,6 +58,7 @@
                                         <th>Role</th>
                                     </tr>
                                     </thead>
+<!--                                    <tbody id="tableOne"></tbody>-->
                                     <tbody>
                                     <tr th:each="user : ${username}" class="font-weight-normal">
                                         <td th:utext="${username.getId()}"></td>
@@ -76,8 +79,8 @@
     </div>
 </div>
 
-
-
+<script src="usGet.js"></script>
+<!--<script src="usGet.js"></script>-->
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

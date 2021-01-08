@@ -4,16 +4,12 @@ import com.example.spring.model.Role;
 import com.example.spring.model.User;
 import com.example.spring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -21,16 +17,6 @@ public class AppController {
 
     @Autowired
     UserService userService;
-
-    @GetMapping(value = "/")
-    public String getHomePage() {
-        return "index";
-    }
-
-    @GetMapping(value = "/restUser")
-    public String getPage() {
-        return "restUser";
-    }
 
     @GetMapping(value = "/login")
     public String getLoginPage() {
@@ -42,7 +28,7 @@ public class AppController {
         String name = principal.getName();//get logged in username
         User user = userService.getUserByName(name);
         model.addAttribute("username", user);
-        return "use";
+        return "user";
     }
 
     @GetMapping(value = "/admin")
@@ -51,7 +37,7 @@ public class AppController {
         User user = userService.getUserByName(name);
         model.addAttribute("userAuth", user);
         model.addAttribute("user", userService.index());
-        return "admi";
+        return "admin";
     }
 
     @GetMapping(value = "/adminin")
@@ -61,48 +47,5 @@ public class AppController {
         model.addAttribute("username", user);
         return "adminin";
     }
-
-    @GetMapping(value = "/admin/new")
-    public String newUser(Model model) {
-        User user = new User();
-        model.addAttribute("user", user);
-//      возвращает html форму для создания нового юзера
-        return "admi";
-    }
-
-
-    @PostMapping(value = "/admin/new")
-    public String create(@ModelAttribute("user") User user, @RequestParam("editRoles") String[] roles){
-//        принимать на вход post запрос, создавать нового юзера, и добавлять в БД
-        Set<Role> roleList = new HashSet<Role>();
-        for(String r : roles) {
-            roleList.add(userService.getRole(r));
-        }
-        user.setRoles(roleList);
-        userService.save(user);
-        return "redirect:/admin";
-    }
-
-    @GetMapping(value = "/admin/{id}/edit")
-    public String edit(Model model, @PathVariable("id") int id) {
-        model.addAttribute("user", userService.show(id));
-        return "admi";
-    }
-
-    @PostMapping(value = "/admin/{id}/edit")
-    public String update(@ModelAttribute("user") User user, @RequestParam("editRoles") String[] roles) {
-        Set<Role> roleList = new HashSet<Role>();;
-        for(String r : roles) {
-            roleList.add(userService.getRole(r));
-        }
-        user.setRoles(roleList);
-        userService.update(user);
-        return "redirect:/admin";
-    }
-
-    @PostMapping("/admin/{id}")
-    public String delete(@PathVariable("id") int id) {
-        userService.delete(id);
-        return "redirect:/admin";
-    }
 }
+

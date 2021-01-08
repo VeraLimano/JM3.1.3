@@ -23,4 +23,6 @@ public interface UserService {
     public void update(User updateUser);
 
     public void delete(int id);
+
+    public void getByName(String name);
 }

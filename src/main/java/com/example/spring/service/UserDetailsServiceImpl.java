@@ -69,4 +69,8 @@ public class UserDetailsServiceImpl implements UserDetailsService, UserService {
     public void delete(int id) {
         userRepository.deleteById(id);
     }
+
+    public void getByName(String name) {
+        userRepository.findByName(name);
+    }
 }
