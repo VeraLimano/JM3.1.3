@@ -13,9 +13,9 @@
 <body>
 
 <nav class="navbar navbar-dark bg-dark">
-    <div class="navbar-brand inline">
-        <b th:text="${username.getName()}">name</b> with roles:
-        <b class="font-weight-normal" th:text="${username.getRoles()}">name</b>
+    <div class="navbar-brand inline" id="str">
+<!--        <b th:text="${username.getName()}">name</b> with roles:-->
+<!--        <b class="font-weight-normal" th:text="${username.getRoles()}">name</b>-->
     </div>
     <div>
         <a href="/logout" class="text-muted">Logout</a>
@@ -58,17 +58,7 @@
                                         <th>Role</th>
                                     </tr>
                                     </thead>
-<!--                                    <tbody id="tableOne" ></tbody>-->
-                                    <tbody>
-                                    <tr th:each="user : ${username}" class="font-weight-normal">
-                                        <td th:utext="${username.getId()}"></td>
-                                        <td th:utext="${username.getName()}"></td>
-                                        <td th:utext="${username.getSurname()}"></td>
-                                        <td th:utext="${username.getAge()}"></td>
-                                        <td th:utext="${username.getEmail()}"></td>
-                                        <td th:utext="${username.getRoles()}"></td>
-                                    </tr>
-                                    </tbody>
+                                    <tbody id="gUser" class="font-weight-normal"></tbody>
                                 </table>
                             </th>
                         </tr>
@@ -81,6 +71,7 @@
 
 
 <script src="usGet.js"></script>
+<!--<script src="usTest.js"></script>-->
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

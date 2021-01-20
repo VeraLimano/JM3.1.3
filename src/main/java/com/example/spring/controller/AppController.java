@@ -23,29 +23,19 @@ public class AppController {
         return "login";
     }
 
-    @GetMapping(value = "/user")
-    public String printWelcome(Model model, Principal principal ) {
-        String name = principal.getName();//get logged in username
-        User user = userService.getUserByName(name);
-        model.addAttribute("username", user);
-        return "user";
+    @GetMapping(value = "/adminin")
+    public String printAdmin() {
+        return "adminin";
     }
 
     @GetMapping(value = "/admin")
-    public String printWelcomeAdmin(Model model, Principal principal ) {
-        String name = principal.getName();//get logged in username
-        User user = userService.getUserByName(name);
-        model.addAttribute("userAuth", user);
-        model.addAttribute("user", userService.index());
+    public String admin() {
         return "admin";
     }
 
-    @GetMapping(value = "/adminin")
-    public String printAdmin(Model model, Principal principal ) {
-        String name = principal.getName();//get logged in username
-        User user = userService.getUserByName(name);
-        model.addAttribute("username", user);
-        return "adminin";
+    @GetMapping(value = "/user")
+    public String user() {
+        return "user";
     }
 }
 

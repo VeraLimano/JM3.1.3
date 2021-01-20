@@ -42,5 +42,5 @@ function openModalWindow(id) {
     document.getElementById("surname4").value = $("#lastName" + id).text();
     document.getElementById("age4").value = $("#age" + id).text();
     document.getElementById("email4").value = $("#email" + id).text();
-    document.getElementById("password4").value = $("#password" + id).text();
+    document.getElementById("password4").value = $("#password" + id).val();
 }

@@ -4,12 +4,12 @@ function add(e) {
     e.preventDefault();
 
     let roles = [];
-    let nameU = document.getElementById("name2").value;
-    let surnameU = document.getElementById("surname2").value;
-    let ageU = document.getElementById("age2").value;
-    let emailU = document.getElementById("email2").value;
-    let passwordU = document.getElementById("password2").value;
-    roles = setRoles(Array.from(document.getElementById("role2").selectedOptions)
+    let nameU = document.getElementById("nameAdd").value;
+    let surnameU = document.getElementById("surnameAdd").value;
+    let ageU = document.getElementById("ageAdd").value;
+    let emailU = document.getElementById("emailAdd").value;
+    let passwordU = document.getElementById("passwordAdd").value;
+    roles = setRoles(Array.from(document.getElementById("roleAdd").selectedOptions)
         .map(option => option.value));
 
     console.log(roles)

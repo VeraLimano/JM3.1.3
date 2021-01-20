@@ -2,6 +2,7 @@ package com.example.spring.controller;
 
 import com.example.spring.model.User;
 import com.example.spring.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.util.*;
 @RestController
 public class RestContr {
 
+    @Autowired
     private UserService service;
 
     public RestContr(UserService service) {
@@ -42,8 +44,14 @@ public class RestContr {
     }
 
     @GetMapping("/userGet")
-    public void getCurrentUser(Principal principal) {
-        service.getByName(principal.getName());
+    public ResponseEntity<User> getCurrentUser(Principal principal) {
+        User user = service.getByName(principal.getName());
+        return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 
+    @GetMapping("/users/{id}")
+    public ResponseEntity<User> getUser(@PathVariable Integer id) {
+        User user = service.getUs(id);
+        return new ResponseEntity<User>(user, HttpStatus.OK);
+    }
 }

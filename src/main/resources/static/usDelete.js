@@ -16,12 +16,12 @@ function deleteUser(e) {
 
 }
 
+
 function openModalWindowDel(id) {
     document.getElementById("id3").value = id;
     document.getElementById("name3").value = $("#name" + id).text();
     document.getElementById("surname3").value = $("#lastName" + id).text();
     document.getElementById("age3").value = $("#age" + id).text();
     document.getElementById("email3").value = $("#email" + id).text();
-    document.getElementById("password3").value = "";
+    // document.getElementById("password3").value = "";
 }
-
